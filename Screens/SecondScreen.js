@@ -7,9 +7,9 @@ import {
   FlatList,
   Button,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {RemoveItemFromCart} from '../Redux/Actions';
+import {RemoveItemFromCart,ReguxSagaApi} from '../Redux/Actions';
 
 const SecondScreen = () => {
   const items = useSelector(state => state);
@@ -19,6 +19,9 @@ const SecondScreen = () => {
   };
   let array = [];
   array = items;
+  useEffect(()=>{
+    dispatch(ReguxSagaApi()) 
+  })
   return (
     <View>
       <View style={styles.container}>
